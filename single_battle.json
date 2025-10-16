@@ -1,0 +1,225 @@
+{
+      "arena": 54000124,
+      "challengeWinCountBefore": 0,
+      "game_config": {
+        "gamemode": 72000474,
+        "name": "Challenge_AllCards_EventDeck_NoSet"
+      },
+      "challenge": false,
+      "survival": false,
+      "friendly_challenge": false,
+      "tournament": false,
+      "clanwars": false,
+      "deckSelection": "eventDeck",
+      "icon": "battleLadder",
+      "info": "",
+      "type": "trail",
+      "replayTag": "08PPG9YGPJQP",
+      "timestamp": 1760616342,
+      "winCount": 12,
+      "players": [
+        {
+          "alliance": "BMG ★ Royal",
+          "alliancehashtag": "9RJRL20V",
+          "badge": 16000122,
+          "avgManaCost": 2.63,
+          "hashtag": "2G2L9PRUP",
+          "name": "ᴍɪɴᴛᴡʏ",
+          "score": 11,
+          "score_p": 11,
+          "spells": [
+            {
+              "d": 26000010,
+              "l": 11,
+              "nl": 11,
+              "icon": "skeletons_card_evolution",
+              "name": "Skeletons",
+              "el": 1,
+              "manaCost": 1
+            },
+            {
+              "d": 27000000,
+              "l": 11,
+              "nl": 11,
+              "icon": "chaos_cannon_evolution",
+              "name": "Cannon",
+              "el": 1,
+              "manaCost": 3
+            },
+            {
+              "d": 26000021,
+              "l": 9,
+              "nl": 11,
+              "icon": "hog_rider",
+              "name": "Hog Rider",
+              "manaCost": 4
+            },
+            {
+              "d": 26000014,
+              "l": 9,
+              "nl": 11,
+              "icon": "musketeer",
+              "name": "Musketeer",
+              "manaCost": 4
+            },
+            {
+              "d": 26000038,
+              "l": 9,
+              "nl": 11,
+              "icon": "icegolem",
+              "name": "Ice Golem",
+              "manaCost": 2
+            },
+            {
+              "d": 26000030,
+              "l": 11,
+              "nl": 11,
+              "icon": "snow_spirits",
+              "name": "Ice Spirit",
+              "manaCost": 1
+            },
+            {
+              "d": 28000011,
+              "l": 3,
+              "nl": 11,
+              "icon": "the_log",
+              "name": "The Log",
+              "manaCost": 2
+            },
+            {
+              "d": 28000000,
+              "l": 9,
+              "nl": 11,
+              "icon": "fire_fireball",
+              "name": "Fireball",
+              "manaCost": 4
+            }
+          ],
+          "stars": 3,
+          "survival": 0,
+          "winner": 1,
+          "elixirLeaked": 0.51,
+          "decklist": [
+            26000010, 27000000, 26000021, 26000014, 26000038, 26000030,
+            28000011, 28000000
+          ],
+          "kingTowerHitPoints": 4824,
+          "princessTowersHitPoints": [3052, 1454],
+          "globalRank": null,
+          "supportCards": [
+            {
+              "name": "Tower Princess",
+              "id": 159000000,
+              "level": 11,
+              "maxLevel": 14,
+              "rarity": "common",
+              "iconUrls": {
+                "medium": "https://api-assets.clashroyale.com/cards/300/Nzo5Gjbh7NG6O3Hyu7ev54Pu5zK7vDMR2fbpGdVsS64.png"
+              }
+            }
+          ]
+        },
+        {
+          "alliance": "bumboys",
+          "alliancehashtag": "RC0PU029",
+          "badge": 16000106,
+          "avgManaCost": 4.5,
+          "hashtag": "GLJR0UP",
+          "name": "axdhe",
+          "score": 11,
+          "score_p": 11,
+          "spells": [
+            {
+              "d": 26000063,
+              "l": 6,
+              "nl": 11,
+              "icon": "electro_dragon_evolution",
+              "name": "Electro Dragon",
+              "el": 1,
+              "manaCost": 5
+            },
+            {
+              "d": 26000035,
+              "l": 3,
+              "nl": 11,
+              "icon": "rage_barbarian_evolution",
+              "name": "Lumberjack",
+              "el": 1,
+              "manaCost": 4
+            },
+            {
+              "d": 26000009,
+              "l": 6,
+              "nl": 11,
+              "icon": "chr_golem",
+              "name": "Golem",
+              "manaCost": 8
+            },
+            {
+              "d": 26000016,
+              "l": 6,
+              "nl": 11,
+              "icon": "prince",
+              "name": "Prince",
+              "manaCost": 5
+            },
+            {
+              "d": 26000005,
+              "l": 11,
+              "nl": 11,
+              "icon": "minion",
+              "name": "Minions",
+              "manaCost": 3
+            },
+            {
+              "d": 27000007,
+              "l": 9,
+              "nl": 11,
+              "icon": "building_elixir_collector",
+              "name": "Elixir Collector",
+              "manaCost": 6
+            },
+            {
+              "d": 28000015,
+              "l": 6,
+              "nl": 11,
+              "icon": "barb_barrel",
+              "name": "Barbarian Barrel",
+              "manaCost": 2
+            },
+            {
+              "d": 28000012,
+              "l": 6,
+              "nl": 11,
+              "icon": "tornado",
+              "name": "Tornado",
+              "manaCost": 3
+            }
+          ],
+          "stars": 0,
+          "survival": 0,
+          "winner": -1,
+          "elixirLeaked": 1.86,
+          "decklist": [
+            26000063, 26000035, 26000009, 26000016, 26000005, 27000007,
+            28000015, 28000012
+          ],
+          "kingTowerHitPoints": 0,
+          "princessTowersHitPoints": null,
+          "globalRank": null,
+          "supportCards": [
+            {
+              "name": "Royal Chef",
+              "id": 159000004,
+              "level": 3,
+              "maxLevel": 6,
+              "rarity": "legendary",
+              "iconUrls": {
+                "medium": "https://api-assets.clashroyale.com/cards/300/CLxP2o0iX7q9peMkekI8Ki4DgWixra8L5aUbiAeBU9U.png"
+              }
+            }
+          ]
+        }
+      ],
+      "leagueNumber": 1
+    }
