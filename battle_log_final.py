@@ -123,6 +123,8 @@ def battle_log_from_json(json_file_path: str , csv_file_path: str):
 
     players_json_unpacked_ids = [player['tag'] for player in players_json_unpacked]
 
+    players_json_unpacked_ids = players_json_unpacked_ids[:1000]  # Limit to first 1000 IDs for testing
+
     # Make parallel API calls
     results_df = parallel_api_calls(players_json_unpacked_ids, max_workers=30)
     # Save to CSV
