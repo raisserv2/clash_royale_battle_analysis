@@ -76,7 +76,7 @@ def fetch_api_data(
 
     except requests.exceptions.RequestException as e:
         print("error", e)
-        return "failed", None
+        return id, "failed", None
 
 
 def parallel_api_calls(
@@ -108,7 +108,7 @@ def parallel_api_calls(
                 print(f"Failed to fetch data for ID: {future_to_id[future]}")
                 failed_id.append(future_to_id[future])
                 continue
-                
+
             results = pd.concat([results, result[2]], ignore_index=True)
             time.sleep(0.2)  # Slight delay to avoid overwhelming the server
             print(f"Completed: {result[0]} - Status: {result[1]}")
@@ -126,7 +126,10 @@ def save_to_csv(data: pd.DataFrame, filename: str):
 
 
 def battle_log_from_json(
-    json_file_path: str, csv_file_path: str, index_tuple: tuple = None, csv_file_path_failed: str = "failed_ids.csv"
+    json_file_path: str,
+    csv_file_path: str,
+    index_tuple: tuple = None,
+    csv_file_path_failed: str = "failed_ids.csv",
 ):
     """Load battle log data from a JSON file and save to CSV"""
     with open(json_file_path, "r", errors="ignore") as file:
@@ -147,14 +150,18 @@ def battle_log_from_json(
         ]  # Limit to first 100 IDs for testing
 
     # Make parallel API calls
-    results_df , failed_ids = parallel_api_calls(players_json_unpacked_ids, max_workers=30)
+    results_df, failed_ids = parallel_api_calls(
+        players_json_unpacked_ids, max_workers=30
+    )
     # Save to CSV
 
     save_to_csv(results_df, csv_file_path)
 
     if failed_ids:
         print(f"Failed to fetch data for IDs: {failed_ids}")
-    save_to_csv(results_df, csv_file_path_failed)
+        with open(csv_file_path_failed, "w") as f:
+            for item in failed_ids:
+                f.write("%s\n" % item)
 
 
 if __name__ == "__main__":
