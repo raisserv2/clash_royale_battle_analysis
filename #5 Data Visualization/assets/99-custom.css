@@ -1,0 +1,65 @@
+/* 99-custom.css
+
+Place only the rules you want to override here. Dash will load external stylesheets
+(e.g. Bootstrap) first, then files in `assets/` alphabetically. Naming this file
+with a high prefix (99-) makes it load near the end so your rules override
+Bootstrap defaults where selectors match.
+
+Keep rules limited and specific so Bootstrap classes still apply where you
+haven't defined something.
+*/
+
+/* Example: set your custom font (we created assets/custom_fonts.css earlier).
+   If you have local fonts loaded via @font-face use that family name here. */
+@font-face {
+    font-family: 'Clash Bold';
+    src: url('fonts/Clash_Bold.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Clash Regular';
+    src: url('fonts/Clash_Regular.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+body {
+  font-family: 'Clash Regular','Clash Bold', Arial, sans-serif;
+  background-color: #fbfdff; /* subtle background, still keeps Bootstrap colors */
+}
+
+/* Navbar tweaks: only change what you want */
+.navbar {
+  box-shadow: 0 2px 6px rgba(20, 20, 40, 0.06);
+}
+.navbar-brand {
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+/* Highlight active nav links with a subtle background */
+.nav-link.active {
+  background-color: rgba(255, 255, 255, 0.06);
+  border-radius: 6px;
+}
+
+/* Buttons: small visual tweak, don't replace Bootstrap entirely */
+.btn-primary {
+  background-image: linear-gradient(180deg, #0069d9, #0056b3);
+  border-color: #004085;
+}
+
+/* If you use a fixed-top navbar, ensure the body has enough padding so
+   content isn't hidden underneath the navbar. Adjust the px value if your
+   navbar has custom height. */
+/* body.fixed-top-padding {
+  padding-top: 70px; /* change to match your navbar height */
+
+
+/* Utility: stronger specificity rules if needed (avoid !important)
+.header .navbar-brand {
+  font-size: 1.15rem; */
+
