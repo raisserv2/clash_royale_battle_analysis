@@ -1,0 +1,249 @@
+{
+  "metadata": {
+    "total_arenas": 24,
+    "scraping_timestamp": 1762720354,
+    "description": "Clash Royale Arena Mapping from Game Data"
+  },
+  "arenas": {
+    "2": {
+      "name": "Arena2",
+      "id": 54000002,
+      "start_trophies": 0,
+      "end_trophies": 299,
+      "trophy_limit": 300,
+      "trophy_road": "Default",
+      "required_king_level": 2,
+      "arena_number": 2
+    },
+    "3": {
+      "name": "Arena3",
+      "id": 54000003,
+      "start_trophies": 300,
+      "end_trophies": 599,
+      "trophy_limit": 600,
+      "trophy_road": "Default",
+      "required_king_level": 3,
+      "arena_number": 3
+    },
+    "4": {
+      "name": "Arena4",
+      "id": 54000004,
+      "start_trophies": 600,
+      "end_trophies": 999,
+      "trophy_limit": 1000,
+      "trophy_road": "Default",
+      "required_king_level": 4,
+      "arena_number": 4
+    },
+    "5": {
+      "name": "Arena5",
+      "id": 54000005,
+      "start_trophies": 1000,
+      "end_trophies": 1299,
+      "trophy_limit": 1300,
+      "trophy_road": "Default",
+      "required_king_level": 5,
+      "arena_number": 5
+    },
+    "6": {
+      "name": "Arena6",
+      "id": 54000006,
+      "start_trophies": 1300,
+      "end_trophies": 1599,
+      "trophy_limit": 1600,
+      "trophy_road": "Default",
+      "required_king_level": 6,
+      "arena_number": 6
+    },
+    "7": {
+      "name": "Arena7",
+      "id": 54000008,
+      "start_trophies": 1600,
+      "end_trophies": 1999,
+      "trophy_limit": 2000,
+      "trophy_road": "Default",
+      "required_king_level": 8,
+      "arena_number": 7
+    },
+    "8": {
+      "name": "Arena8",
+      "id": 54000009,
+      "start_trophies": 2000,
+      "end_trophies": 2299,
+      "trophy_limit": 2300,
+      "trophy_road": "Default",
+      "required_king_level": 10,
+      "arena_number": 8
+    },
+    "9": {
+      "name": "Arena9",
+      "id": 54000010,
+      "start_trophies": 2300,
+      "end_trophies": 2599,
+      "trophy_limit": 2600,
+      "trophy_road": "Default",
+      "required_king_level": 12,
+      "arena_number": 9
+    },
+    "10": {
+      "name": "Arena_L",
+      "id": 54000007,
+      "start_trophies": 2600,
+      "end_trophies": 2999,
+      "trophy_limit": 3000,
+      "trophy_road": "Default",
+      "required_king_level": 14,
+      "arena_number": 10
+    },
+    "11": {
+      "name": "Arena_Electric",
+      "id": 54000024,
+      "start_trophies": 3000,
+      "end_trophies": 3399,
+      "trophy_limit": 3400,
+      "trophy_road": "Default",
+      "required_king_level": 16,
+      "arena_number": 11
+    },
+    "12": {
+      "name": "Arena_T",
+      "id": 54000011,
+      "start_trophies": 3400,
+      "end_trophies": 3799,
+      "trophy_limit": 3800,
+      "trophy_road": "Default",
+      "required_king_level": 18,
+      "arena_number": 12
+    },
+    "13": {
+      "name": "Arena13",
+      "id": 54000055,
+      "start_trophies": 3800,
+      "end_trophies": 4199,
+      "trophy_limit": 4200,
+      "trophy_road": "Default",
+      "required_king_level": 20,
+      "arena_number": 13
+    },
+    "14": {
+      "name": "Arena14",
+      "id": 54000056,
+      "start_trophies": 4200,
+      "end_trophies": 4599,
+      "trophy_limit": 4600,
+      "trophy_road": "Default",
+      "required_king_level": 22,
+      "arena_number": 14
+    },
+    "15": {
+      "name": "Arena_L1",
+      "id": 54000012,
+      "start_trophies": 4600,
+      "end_trophies": 4999,
+      "trophy_limit": 5000,
+      "trophy_road": "Default",
+      "required_king_level": 24,
+      "arena_number": 15
+    },
+    "16": {
+      "name": "Arena_L2",
+      "id": 54000013,
+      "start_trophies": 5000,
+      "end_trophies": 5499,
+      "trophy_limit": 5500,
+      "trophy_road": "Default",
+      "required_king_level": 24,
+      "arena_number": 16
+    },
+    "17": {
+      "name": "Arena_L3",
+      "id": 54000014,
+      "start_trophies": 5500,
+      "end_trophies": 5999,
+      "trophy_limit": 6000,
+      "trophy_road": "Default",
+      "required_king_level": 24,
+      "arena_number": 17
+    },
+    "18": {
+      "name": "Arena_L4",
+      "id": 54000015,
+      "start_trophies": 6000,
+      "end_trophies": 6499,
+      "trophy_limit": 6500,
+      "trophy_road": "Default",
+      "required_king_level": 24,
+      "arena_number": 18
+    },
+    "19": {
+      "name": "Arena_L5",
+      "id": 54000016,
+      "start_trophies": 6500,
+      "end_trophies": 6999,
+      "trophy_limit": 7000,
+      "trophy_road": "Default",
+      "required_king_level": 24,
+      "arena_number": 19
+    },
+    "20": {
+      "name": "Arena_L6",
+      "id": 54000017,
+      "start_trophies": 7000,
+      "end_trophies": 7499,
+      "trophy_limit": 7500,
+      "trophy_road": "Default",
+      "required_king_level": 24,
+      "arena_number": 20
+    },
+    "21": {
+      "name": "Arena_L7",
+      "id": 54000018,
+      "start_trophies": 7500,
+      "end_trophies": 7999,
+      "trophy_limit": 8000,
+      "trophy_road": "Default",
+      "required_king_level": 24,
+      "arena_number": 21
+    },
+    "22": {
+      "name": "Arena_L8",
+      "id": 54000019,
+      "start_trophies": 8000,
+      "end_trophies": 8499,
+      "trophy_limit": 8500,
+      "trophy_road": "Default",
+      "required_king_level": 24,
+      "arena_number": 22
+    },
+    "23": {
+      "name": "Arena_L9",
+      "id": 54000020,
+      "start_trophies": 8500,
+      "end_trophies": 8999,
+      "trophy_limit": 9000,
+      "trophy_road": "Default",
+      "required_king_level": 24,
+      "arena_number": 23
+    },
+    "24": {
+      "name": "Arena_L10",
+      "id": 54000031,
+      "start_trophies": 9000,
+      "end_trophies": 9499,
+      "trophy_limit": 9500,
+      "trophy_road": "Default",
+      "required_king_level": 24,
+      "arena_number": 24
+    },
+    "25": {
+      "name": "Arena_L11",
+      "id": 54000117,
+      "start_trophies": 9500,
+      "end_trophies": 999999,
+      "trophy_limit": 1000000,
+      "trophy_road": "Default",
+      "required_king_level": 24,
+      "arena_number": 25
+    }
+  }
+}
