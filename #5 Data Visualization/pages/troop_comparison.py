@@ -6,7 +6,7 @@ import dash_bootstrap_components as dbc
 
 dash.register_page(__name__, path="/troop", name="Troop Comparison")
 
-TROOP_PATH = "C:/Users/Aseel/project/dcv_project/#2 Data Storage/Utils/troop_name.csv"
+TROOP_PATH = "../#2 Data Storage/Utils/troop_name.csv"
 
 
 layout = dbc.Container(
@@ -75,7 +75,7 @@ layout = dbc.Container(
             ], md=6)
         ]),
         html.Hr(),
-        
+
     ],
     fluid=True
 )
