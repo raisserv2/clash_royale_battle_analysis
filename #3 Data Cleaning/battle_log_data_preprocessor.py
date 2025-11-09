@@ -97,13 +97,13 @@ def main(input_filename = "../#2 Data Storage/scrapped_data/semi_data_trail.csv"
         
         # Create the new dataframe
         results_df = df[existing_columns_to_keep].copy()
-
-        # 2. Filter out "TeamVsTeam" rows
+        
+    
+        # 2. Filter in "Ladder" rows
         if "game_config_name" in results_df.columns:
-            results_df = results_df[results_df["game_config_name"] != "TeamVsTeam"].copy()
-            print("Filtered out 'TeamVsTeam' rows.")
+            results_df = results_df[results_df["game_config_name"] == "Ladder"].copy()
+            print("Filtered in 'Ladder' rows.")
 
-        # 3. Apply Spells Transformation (from previous step)
         if 'players_0_spells' in results_df.columns:
             results_df['players_0_spells'] = results_df['players_0_spells'].apply(parse_spells)
             print("Processed 'players_0_spells'.")
@@ -128,6 +128,7 @@ def main(input_filename = "../#2 Data Storage/scrapped_data/semi_data_trail.csv"
         # Optional: Display info and head to verify the new columns
         print("\n--- DataFrame Info after All Preprocessing ---")
         results_df.info()
+        print("number of rows dropped",len(df)-len(results_df))
         
         print("\n--- Head of Transformed 'supportCards' Columns ---")
         support_cols_to_show = [col for col in ['players_0_supportCards', 'players_1_supportCards'] if col in results_df.columns]

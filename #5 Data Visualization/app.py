@@ -1,0 +1,42 @@
+# app.py
+import dash
+from dash import html
+import dash_bootstrap_components as dbc
+
+external = [
+    "/assets/custom_fonts.css",
+]
+# Initialize the app with Bootstrap theme
+app = dash.Dash(
+    __name__,
+    use_pages=True,
+    external_stylesheets=external+[dbc.themes.BOOTSTRAP],
+    suppress_callback_exceptions=True,
+)
+server = app.server
+
+# Navbar
+navbar = dbc.NavbarSimple(
+    brand="Battle Dashboard",
+    color="primary",
+    dark=True,
+    children=[
+        dbc.NavItem(dbc.NavLink("Player 1 vs Player 2", href="/player")),
+        dbc.NavItem(dbc.NavLink("Arena 1 vs Arena 2", href="/arena")),
+        dbc.NavItem(dbc.NavLink("Custom Builder", href="/builder")),
+        dbc.NavItem(dbc.NavLink("Combined Strength", href="/combined")),
+    ],
+)
+
+# Main layout
+app.layout = dbc.Container(
+    [
+        navbar,
+        html.Br(),
+        dash.page_container  # renders each registered page
+    ],
+    fluid=True,
+)
+
+if __name__ == "__main__":
+    app.run(debug=True,port=1111)
