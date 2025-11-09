@@ -104,6 +104,10 @@ def main(input_filename = "../#2 Data Storage/scrapped_data/semi_data_trail.csv"
             results_df = results_df[results_df["game_config_name"] == "Ladder"].copy()
             print("Filtered in 'Ladder' rows.")
 
+        if 'players_0_spells' in results_df.columns:
+            results_df['players_0_spells'] = results_df['players_0_spells'].apply(parse_spells)
+            print("Processed 'players_0_spells'.")
+
         if 'players_1_spells' in results_df.columns:
             results_df['players_1_spells'] = results_df['players_1_spells'].apply(parse_spells)
             print("Processed 'players_1_spells'.")
