@@ -163,12 +163,11 @@ def create_comprehensive_evo_dashboard(evo_df, non_evo_df):
 
     return fig
 
-
 card_db_path = "../#2 Data Storage/Visualization Data/card_database.csv"
 battle_data_path = "../#2 Data Storage/Visualization Data/clash_royale_data_separated.pkl"
 
 card_db = pd.read_csv(card_db_path)
-print(f"✓ Loaded card database: {len( card_db)} cards")
+
 
 # Load battle data
 with open(battle_data_path, 'rb') as f:
@@ -206,10 +205,6 @@ non_evo_df =  non_evo_df.merge(
 
 # Create combined DataFrame
 combined_df = pd.concat([ evo_df,  non_evo_df], ignore_index=True)
-
-print(f"✓ Loaded battle data: {len( combined_df)} card entries")
-print(f"  - EVO cards: {len( evo_df)}")
-print(f"  - NON-EVO cards: {len( non_evo_df)}")
 
 
 fig_top_performers = create_top_performers_dashboard(evo_df, non_evo_df)
