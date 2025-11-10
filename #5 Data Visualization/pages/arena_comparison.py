@@ -42,7 +42,7 @@ try:
     # Sum up counts, ignoring evo (group by arena, card, outcome)
     df_grouped = df_winloss.groupby(['arena_num_str', 'card_name', 'outcome'])['count'].sum().unstack(fill_value=0)
     
-    THRESHOLD = 20
+    THRESHOLD = 50
     
     # Calculate total matches
     df_grouped['Total_Matches'] = df_grouped['Won'] + df_grouped['Lost']
