@@ -97,9 +97,9 @@ summary_metrics_card = dbc.Card([
     dbc.CardHeader("Summary Metrics"),
     dbc.CardBody([
         html.P("Usage Count:"), # <-- RENAMED
-        html.H4("—", id="total-strength", className="text-success"),
+        html.H4("—", id="total-strength", className="text-info"),
         html.P("Win Rate %:"), # <-- RENAMED
-        html.H4("—", id="avg-strength", className="text-info"),
+        html.H4("—", id="avg-strength", className="text-success"),
         # Note: The "Recalculate" button doesn't have an Input/State in any callback
         # You may want to wire this up if it's supposed to do something.
         dbc.Button("Recalculate", color="primary", className="mt-2", id="recalc-button", n_clicks=0)
@@ -218,7 +218,7 @@ def update_strength(troop1, troop2): #, n_clicks):
         x=['Usage Count'], # Category on X-axis
         y=[usuage_count],    # Value on Y-axis
         name='Usage Count',
-        marker_color="#1343E1",
+        marker_color="#1167D7",
         text=[f"{usuage_count:,}"],
         textposition='auto',
         yaxis='y1' # Assign to the first y-axis
@@ -229,7 +229,7 @@ def update_strength(troop1, troop2): #, n_clicks):
         x=['Win Rate %'], # Category on X-axis
         y=[win_rate_percent], # Value on Y-axis
         name='Win Rate %',
-        marker_color="#0BC157",
+        marker_color="#18B480",
         text=[f"{win_rate_percent:.1f}%"],
         textposition='auto',
         yaxis='y2' # Assign to the second y-axis
@@ -247,7 +247,7 @@ def update_strength(troop1, troop2): #, n_clicks):
             range=[0, max(usuage_count * 1.25, 10)], # Dynamic range
             title_font=dict(family="'Clash Bold', Arial, sans-serif"),
             tickfont=dict(family="'Clash Regular', Arial, sans-serif"),
-            color="#1343E1" # Match bar color
+            color="#1167D7" # Match bar color
         ),
         
         # Define Right Y-axis (Y2)
@@ -258,7 +258,7 @@ def update_strength(troop1, troop2): #, n_clicks):
             range=[0, 100], # Win rate is 0-100
             title_font=dict(family="'Clash Bold', Arial, sans-serif"),
             tickfont=dict(family="'Clash Regular', Arial, sans-serif"),
-            color="#0BC157" # Match bar color
+            color="#18B480" # Match bar color
         ),
         
         # Shared layout properties
