@@ -17,7 +17,11 @@ WIN_LOSS_PATH = "../#2 Data Storage/Visualization Data/arenawise_card_win_loss.c
 try:
     df_troops_stats_non_evo = pd.read_csv(TROOP_STATS_PATH_NON_EVO)
     df_troops_stats_evo = pd.read_csv(TROOP_STATS_PATH_EVO)
-    df_troops_name = pd.read_csv(TROOP_PATH)["Troop_name"]
+    df_troops = pd.read_csv(TROOP_PATH)
+    df_troops_name = df_troops["Troop_name"]
+    # Create the lookup map: {'Knight': 1, 'Archers': 1, 'Goblins': 0}
+    evo_lookup_map = pd.Series(df_troops.Evolution.values, index=df_troops.Troop_name).to_dict()
+    
     grouped_df = pd.read_csv(WIN_LOSS_PATH)
     
     # --- Data Prep ---
@@ -167,15 +171,21 @@ layout = dbc.Container(
                                             value=troops_with_data[0],
                                         ),
                                         html.Br(),
-                                        html.Label("Evolution:"),
-                                        dcc.RadioItems(
-                                            id="evolution-selector-1",
-                                            options=[
-                                                {"label": "Normal", "value": "normal"},
-                                                {"label": "Evolution", "value": "evo"},
-                                            ],
-                                            value="normal",
-                                            inline=True,
+                                        html.Div(
+                                            id="evolution-container-1",
+                                            style={'display': 'none'}, # Hide by default
+                                            children=[
+                                                dcc.RadioItems(
+                                                    id="evolution-selector-1",
+                                                    options=[
+                                                        {"label": "Normal", "value": "normal"},
+                                                        {"label": "Evolution", "value": "evo"},
+                                                    ],
+                                                    value="normal",
+                                                    inline=True,
+                                                    className="dbc"
+                                                ),
+                                            ]
                                         ),
                                         html.Hr(),
                                         html.Div(id="troop-info-1", className="mt-3"),
@@ -205,15 +215,21 @@ layout = dbc.Container(
                                             value=troops_with_data[1],
                                         ),
                                         html.Br(),
-                                        html.Label("Evolution:"),
-                                        dcc.RadioItems(
-                                            id="evolution-selector-2",
-                                            options=[
-                                                {"label": "Normal", "value": "normal"},
-                                                {"label": "Evolution", "value": "evo"},
-                                            ],
-                                            value="normal",
-                                            inline=True,
+                                        html.Div(
+                                            id="evolution-container-2",
+                                            style={'display': 'none'}, # Hide by default
+                                            children=[
+                                                dcc.RadioItems(
+                                                    id="evolution-selector-2",
+                                                    options=[
+                                                        {"label": "Normal", "value": "normal"},
+                                                        {"label": "Evolution", "value": "evo"},
+                                                    ],
+                                                    value="normal",
+                                                    inline=True,
+                                                    className="dbc"
+                                                ),
+                                            ]
                                         ),
                                         html.Hr(),
                                         html.Div(id="troop-info-2", className="mt-3"),
@@ -233,6 +249,33 @@ layout = dbc.Container(
     fluid=True,
 )
 
+# --- NEW CALLBACK 1: Show/Hide Evo Radio for Troop 1 ---
+@dash.callback(
+    Output("evolution-container-1", "style"),
+    Output("evolution-selector-1", "value"),
+    Input("troop-dropdown-1", "value")
+)
+def toggle_evolution_radio_1(selected_troop):
+    if selected_troop and evo_lookup_map.get(selected_troop) == 1:
+        # If troop exists and has evo (1), show the radio buttons
+        return {'display': 'block'}, dash.no_update # Keep current value
+    else:
+        # If no troop selected or troop has no evo (0), hide and reset
+        return {'display': 'none'}, "normal" 
+
+# --- NEW CALLBACK 2: Show/Hide Evo Radio for Troop 2 ---
+@dash.callback(
+    Output("evolution-container-2", "style"),
+    Output("evolution-selector-2", "value"),
+    Input("troop-dropdown-2", "value")
+)
+def toggle_evolution_radio_2(selected_troop):
+    if selected_troop and evo_lookup_map.get(selected_troop) == 1:
+        # If troop exists and has evo (1), show the radio buttons
+        return {'display': 'block'}, dash.no_update # Keep current value
+    else:
+        # If no troop selected or troop has no evo (0), hide and reset
+        return {'display': 'none'}, "normal"
 
 @dash.callback(
     Output("troop-info-1", "children"),

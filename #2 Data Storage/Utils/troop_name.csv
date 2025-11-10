@@ -1,122 +1,122 @@
-,Troop_name
-1,Mega Minion
-2,Barbarians
-3,Giant
-4,Goblin Hut
-5,Spear Goblins
-6,Valkyrie
-7,Knight
-8,Mini P.E.K.K.A
-9,Cannon
-10,Tombstone
-11,Bomber
-12,Skeleton Army
-13,Musketeer
-14,Battle Ram
-15,Fireball
-16,Goblin Cage
-17,Wizard
-18,Minions
-19,Witch
-20,Skeleton Dragons
-21,Mortar
-22,Bats
-23,Archers
-24,Arrows
-25,Skeletons
-26,Royal Ghost
-27,Hog Rider
-28,Rocket
-29,Zap
-30,Flying Machine
-31,Goblins
-32,Inferno Tower
-33,Bomb Tower
-34,Fire Spirit
-35,Electro Spirit
-36,Baby Dragon
-37,Goblin Barrel
-38,Three Musketeers
-39,P.E.K.K.A
-40,Goblin Gang
-41,Dart Goblin
-42,Electro Dragon
-43,Balloon
-44,Vines
-45,Prince
-46,Mirror
-47,Royal Hogs
-48,Mega Knight
-49,Sparky
-50,Clone
-51,X-Bow
-52,Goblin Curse
-53,Miner
-54,Inferno Dragon
-55,Suspicious Bush
-56,Elixir Golem
-57,Princess
-58,The Log
-59,Ice Wizard
-60,Royal Recruits
-61,Skeleton Barrel
-62,Giant Skeleton
-63,Skeleton King
-64,Void
-65,Night Witch
-66,Lumberjack
-67,Royal Giant
-68,Lightning
-69,Fisherman
-70,Giant Snowball
-71,Ice Spirit
-72,Guards
-73,Minion Horde
-74,Electro Giant
-75,Hunter
-76,Zappies
-77,Dark Prince
-78,Barbarian Barrel
-79,Tesla
-80,Lava Hound
-81,Tornado
-82,Poison
-83,Freeze
-84,Executioner
-85,Royal Delivery
-86,Phoenix
-87,Mother Witch
-88,Bowler
-89,Ram Rider
-90,Firecracker
-91,Graveyard
-92,Battle Healer
-93,Bandit
-94,Rage
-95,Elite Barbarians
-96,Magic Archer
-97,Rune Giant
-98,Berserker
-99,Rascals
-100,Goblin Demolisher
-101,Goblin Giant
-102,Electro Wizard
-103,Golem
-104,Ice Golem
-105,Wall Breakers
-106,Goblin Machine
-107,Furnace
-108,Cannon Cart
-109,Earthquake
-110,Archer Queen
-111,Golden Knight
-112,Barbarian Hut
-113,Goblin Drill
-114,Heal Spirit
-115,Mighty Miner
-116,Little Prince
-117,Elixir Collector
-118,Boss Bandit
-119,Goblinstein
-120,Monk
-121,Spirit Empress
+,Troop_name,Evolution
+1,Mega Minion,0
+2,Barbarians,1
+3,Giant,0
+4,Goblin Hut,0
+5,Spear Goblins,0
+6,Valkyrie,1
+7,Knight,1
+8,Mini P.E.K.K.A,0
+9,Cannon,1
+10,Tombstone,0
+11,Bomber,1
+12,Skeleton Army,1
+13,Musketeer,1
+14,Battle Ram,1
+15,Fireball,0
+16,Goblin Cage,1
+17,Wizard,1
+18,Minions,0
+19,Witch,1
+20,Skeleton Dragons,0
+21,Mortar,1
+22,Bats,1
+23,Archers,1
+24,Arrows,0
+25,Skeletons,1
+26,Royal Ghost,1
+27,Hog Rider,0
+28,Rocket,0
+29,Zap,1
+30,Flying Machine,0
+31,Goblins,0
+32,Inferno Tower,0
+33,Bomb Tower,0
+34,Fire Spirit,0
+35,Electro Spirit,0
+36,Baby Dragon,1
+37,Goblin Barrel,1
+38,Three Musketeers,1
+39,P.E.K.K.A,0
+40,Goblin Gang,0
+41,Dart Goblin,1
+42,Electro Dragon,1
+43,Balloon,0
+44,Vines,0
+45,Prince,0
+46,Mirror,0
+47,Royal Hogs,1
+48,Mega Knight,1
+49,Sparky,0
+50,Clone,0
+51,X-Bow,0
+52,Goblin Curse,0
+53,Miner,0
+54,Inferno Dragon,1
+55,Suspicious Bush,0
+56,Elixir Golem,0
+57,Princess,0
+58,The Log,0
+59,Ice Wizard,0
+60,Royal Recruits,1
+61,Skeleton Barrel,1
+62,Giant Skeleton,0
+63,Skeleton King,0
+64,Void,0
+65,Night Witch,0
+66,Lumberjack,1
+67,Royal Giant,1
+68,Lightning,0
+69,Fisherman,0
+70,Giant Snowball,1
+71,Ice Spirit,1
+72,Guards,0
+73,Minion Horde,0
+74,Electro Giant,0
+75,Hunter,1
+76,Zappies,0
+77,Dark Prince,0
+78,Barbarian Barrel,0
+79,Tesla,1
+80,Lava Hound,0
+81,Tornado,0
+82,Poison,0
+83,Freeze,0
+84,Executioner,1
+85,Royal Delivery,0
+86,Phoenix,0
+87,Mother Witch,0
+88,Bowler,0
+89,Ram Rider,0
+90,Firecracker,1
+91,Graveyard,0
+92,Battle Healer,0
+93,Bandit,0
+94,Rage,0
+95,Elite Barbarians,0
+96,Magic Archer,0
+97,Rune Giant,0
+98,Berserker,0
+99,Rascals,0
+100,Goblin Demolisher,0
+101,Goblin Giant,1
+102,Electro Wizard,0
+103,Golem,0
+104,Ice Golem,0
+105,Wall Breakers,1
+106,Goblin Machine,0
+107,Furnace,1
+108,Cannon Cart,0
+109,Earthquake,0
+110,Archer Queen,0
+111,Golden Knight,0
+112,Barbarian Hut,0
+113,Goblin Drill,1
+114,Heal Spirit,0
+115,Mighty Miner,0
+116,Little Prince,0
+117,Elixir Collector,0
+118,Boss Bandit,0
+119,Goblinstein,0
+120,Monk,0
+121,Spirit Empress,0
