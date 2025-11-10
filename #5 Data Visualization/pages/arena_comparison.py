@@ -139,8 +139,10 @@ def create_top_n_figure(selected_arena, selected_top_n, selected_metric):
 # --- 5. PAGE LAYOUT (Modified Layout) ---
 layout = dbc.Container(
     [
-        html.H2("Top N Card Usage & Win Rate by Arena"),
-        html.Hr(),
+        html.Div(
+            html.H2("Top N Card Usage & Win Rate by Arena"),
+            className="page-title-container"
+        ),
         dbc.Row([
             dbc.Col([
                 dbc.Card([

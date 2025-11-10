@@ -119,8 +119,10 @@ summary_metrics_card = dbc.Card([
 
 layout = dbc.Container(
     [
-        html.H2("Troop Combinations Overview"),
-        html.Hr(),
+        html.Div(
+            html.H2("Troop Combinations Overview"),
+            className="page-title-container"
+        ),
         dbc.Row([
             dbc.Col([
                 dbc.Card(
@@ -174,14 +176,19 @@ layout = dbc.Container(
                 ])
             ], md=8),
         ]), 
+        html.Br(),
         dbc.Row([
-            dbc.Col([
-                dcc.Graph(
-                    id="meta-map-graph",
-                    figure=create_meta_map(INPUT_FILE),
-                    config={"displayModeBar": False}
+            dbc.Card([
+                dbc.CardHeader("Meta Map: Troop Combinations Overview"),
+                dbc.CardBody([
+                    dcc.Graph(
+                        id="meta-map-graph",
+                        figure=create_meta_map(INPUT_FILE),
+                        config={"displayModeBar": False}
                 )
             ])
+            ])
+            
         ])
     ], 
     fluid=True

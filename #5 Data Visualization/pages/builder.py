@@ -65,9 +65,10 @@ except Exception as e:
 # --- 3. Define the Layout (Only Section 1) ---
 layout = dbc.Container(
     [
-        # --- SECTION 1: Card-wise Arena Usage ---
-        html.H2("Card-wise Arena Analysis"), # Renamed title
-        html.Hr(),
+        html.Div(
+            html.H2("Card-wise Arena Analysis"),
+            className="page-title-container"
+        ),
         dbc.Row(
             [
                 dbc.Col(
