@@ -1,3 +1,4 @@
+# pages/combined_strength.py
 import dash
 from dash import html, dcc
 import dash_bootstrap_components as dbc
@@ -23,12 +24,12 @@ except FileNotFoundError as e:
     print(f"Error loading data for combined_strength page: {e}")
     df_troops_name = pd.Series(["No Troops Found"])
     all_troop_options = [{"label": "No Troops Found", "value": "No Troops Found"}]
-    df_compared = pd.DataFrame(columns=['card_1', 'card_2', 'usage_count', 'win_rate_percent'])
+    df_compared = pd.DataFrame(columns=['card_1', 'card_2', 'usage_count', 'win_rate_percent', 'total_elixir_cost'])
 except pd.errors.EmptyDataError as e:
     print(f"Error: A data file was empty. {e}")
     df_troops_name = pd.Series(["No Troops Found"])
     all_troop_options = [{"label": "No Troops Found", "value": "No Troops Found"}]
-    df_compared = pd.DataFrame(columns=['card_1', 'card_2', 'usage_count', 'win_rate_percent'])
+    df_compared = pd.DataFrame(columns=['card_1', 'card_2', 'usage_count', 'win_rate_percent', 'total_elixir_cost'])
 
 
 def create_meta_map(csv_path):
@@ -54,18 +55,24 @@ def create_meta_map(csv_path):
             mode='markers',
             marker=dict(
                 size=5,
-                color=df['win_rate_percent'], 
-                colorscale='Bluered',
+                # --- CHANGE 1: Color based on elixir cost ---
+                color=df['total_elixir_cost'], 
+                # --- CHANGE 2: Use a sequential, dark-friendly colorscale ---
+                colorscale='Plasma',
                 showscale=True,
-                colorbar=dict(title='Win Rate %')
+                # --- CHANGE 3: Update colorbar title ---
+                colorbar=dict(title='Total Elixir')
             ),
             hovertemplate=(
                 f"<b>Pair:</b> %{{customdata[0]}}<br>"
                 f"<b>Usage:</b> %{{x:,}}<br>"
-                f"<b>Win Rate:</b> %{{y:.1f}}%"
+                f"<b>Win Rate:</b> %{{y:.1f}}%<br>"
+                # --- CHANGE 4: Add Elixir Cost to hover text ---
+                f"<b>Elixir Cost:</b> %{{customdata[1]:.0f}}"
                 "<extra></extra>"
             ),
-            customdata=df[['pair_name']]
+            # --- CHANGE 5: Add elixir cost to customdata ---
+            customdata=df[['pair_name', 'total_elixir_cost']]
         )
     )
 
