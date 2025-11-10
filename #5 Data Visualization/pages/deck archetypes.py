@@ -1,37 +1,14 @@
-import pandas as pd
-import plotly.express as px
-import plotly.graph_objects as go
-from plotly.subplots import make_subplots
-import numpy as np
-import networkx as nx
-import pickle
-import json
-from collections import defaultdict
-import ast
+# pages/deck_archetypes.py
 import dash
-from dash import html, dcc, callback, Input, Output
+from dash import html, dcc
 import dash_bootstrap_components as dbc
 import plotly.graph_objects as go
-import json
+import plotly.express as px
 import pandas as pd
-from collections import defaultdict
-
+import pickle
+from typing import Dict, List, Optional # Keep for type hints
 
 dash.register_page(__name__, path="/deck", name="Deck Archetypes")
-
-import pandas as pd
-import plotly.express as px
-import plotly.graph_objects as go
-from plotly.subplots import make_subplots
-import numpy as np
-import networkx as nx
-from sklearn.preprocessing import StandardScaler
-from sklearn.decomposition import PCA
-import pickle
-import json
-from collections import defaultdict
-import ast
-from typing import Dict, List, Optional
 
 # --- Data Preparation & Constants ---
 
@@ -50,67 +27,86 @@ DEFAULT_ARCHETYPE_MAPPING = {
 def prepare_archetype_data(df: pd.DataFrame, mapping: Dict = DEFAULT_ARCHETYPE_MAPPING) -> pd.DataFrame:
     """
     Assigns archetypes to cards in the DataFrame based on a mapping.
-    
-    Args:
-        df: The input DataFrame (must contain a 'card' column).
-        mapping: A dictionary defining which cards belong to which archetype.
-        
-    Returns:
-        A new DataFrame with an 'archetype' column added.
+    This is still used by the Treemap.
     """
     df_out = df.copy()
     df_out['archetype'] = 'Utility'  # Default value
     for archetype, cards in mapping.items():
         mask = df_out['card'].isin(cards)
-        df_out.loc[mask, 'archetype'] = archetype
+        df_out.loc[mask, 'archetype'] = archetype # Note: This overwrites, which is a limitation for the treemap
     return df_out
 
 # --- Visualization Functions ---
 
-
-#
 # 7. Deck Archetype Sunburst Chart
 def create_archetype_sunburst(df: pd.DataFrame) -> go.Figure:
     """
     Sunburst chart of archetypes and cards.
-    Requires 'archetype' column (run prepare_archetype_data first).
     """
-    if 'archetype' not in df.columns:
-        print("Warning: 'archetype' column not found. Run prepare_archetype_data() first.")
-        return go.Figure()
-
+    # --- MODIFICATION: Build data directly from the mapping ---
     sunburst_data = []
     
-    for archetype in df['archetype'].unique():
-        archetype_cards = df[df['archetype'] == archetype]
-        total_usage = archetype_cards['usage_count'].sum()
-        avg_win_rate = archetype_cards['win_percentage'].mean()
+    # Add a root node
+    sunburst_data.append({
+        'ids': 'All Archetypes',
+        'labels': 'All Archetypes',
+        'parents': '',
+        'values': 0.0, # Will be summed by plotly
+        'win_rate': 50.0 # Neutral
+    })
+
+    # Loop through the mapping to build the hierarchy correctly
+    for archetype, cards_list in DEFAULT_ARCHETYPE_MAPPING.items():
+        # Filter the main dataframe for cards in this archetype
+        archetype_cards = df[df['card'].isin(cards_list)]
         
-        # Archetype level
-        sunburst_data.append({
-            'ids': archetype,
-            'labels': archetype,
-            'parents': '',
-            'values': total_usage,
-            'win_rate': avg_win_rate
-        })
-        
-        # Card level
-        for _, card in archetype_cards.iterrows():
+        if not archetype_cards.empty:
+            total_usage = archetype_cards['usage_count'].sum()
+            # Calculate weighted average win rate for the archetype
+            avg_win_rate = (archetype_cards['win_percentage'] * archetype_cards['total_plays']).sum() / archetype_cards['total_plays'].sum()
+            
+            # Archetype level
             sunburst_data.append({
-                'ids': f"{archetype}-{card['card']}",
-                'labels': card['card'],
-                'parents': archetype,
-                'values': card['usage_count'],
-                'win_rate': card['win_percentage']
+                'ids': archetype,
+                'labels': archetype,
+                'parents': 'All Archetypes', # Parent is the root
+                'values': total_usage,
+                'win_rate': avg_win_rate
             })
+            
+            # Card level
+            for _, card in archetype_cards.iterrows():
+                sunburst_data.append({
+                    'ids': f"{archetype}-{card['card']}", # Unique ID
+                    'labels': card['card'],
+                    'parents': archetype, # Parent is the archetype
+                    'values': card['usage_count'],
+                    'win_rate': card['win_percentage']
+                })
     
     df_sunburst = pd.DataFrame(sunburst_data)
     
-    fig = px.sunburst(df_sunburst, path=['parents', 'labels'], values='values',
-                      color='win_rate', color_continuous_scale='RdYlGn',
-                      title='Deck Archetype Hierarchy and Performance')
+    # Ensure root node 'All Archetypes' is not counted in 'values'
+    df_sunburst_fig = df_sunburst[df_sunburst['parents'] != '']
     
+    fig = px.sunburst(df_sunburst_fig, path=['parents', 'labels'], values='values',
+                      color='win_rate', color_continuous_scale='RdYlGn',
+                      title='Deck Archetype Hierarchy and Performance',
+                      hover_data={'win_rate': ':.1f%'})
+    
+    # --- MODIFICATION: Apply Theme and Height ---
+    fig.update_layout(
+        height=800, # Increased height
+        template="plotly_dark",
+        paper_bgcolor="rgba(0,0,0,0)",
+        plot_bgcolor="rgba(0,0,0,0)",
+        font=dict(family="'Clash Regular', Arial, sans-serif", size=14, color="#FFFFFF"),
+        title_font=dict(family="'Clash Bold', Arial, sans-serif", size=20)
+    )
+    fig.update_traces(
+        textfont=dict(family="'Clash Regular', Arial, sans-serif", color="#FFFFFF"),
+        insidetextorientation='radial'
+    )
     return fig
 
 # 12. Card Performance Treemap
@@ -130,9 +126,20 @@ def create_card_treemap(df: pd.DataFrame, min_plays: int = 30) -> go.Figure:
                      color_continuous_scale='RdYlGn',
                      title='Card Performance Treemap (Size=Usage, Color=Win Rate)')
     
-    fig.update_layout(margin=dict(t=50, l=25, r=25, b=25))
+    # --- MODIFICATION: Apply Theme ---
+    fig.update_layout(
+        margin=dict(t=50, l=25, r=25, b=25),
+        template="plotly_dark",
+        paper_bgcolor="rgba(0,0,0,0)",
+        plot_bgcolor="rgba(0,0,0,0)",
+        font=dict(family="'Clash Regular', Arial, sans-serif", size=14, color="#FFFFFF"),
+        title_font=dict(family="'Clash Bold', Arial, sans-serif", size=20)
+    )
+    # Update text on the plot itself
+    fig.update_traces(
+        textfont=dict(family="'Clash Regular', Arial, sans-serif")
+    )
     return fig
-
 
 
 # --- Example Usage ---
@@ -140,14 +147,12 @@ def create_card_treemap(df: pd.DataFrame, min_plays: int = 30) -> go.Figure:
 def load_example_data(card_db_path='card_database.csv', battle_data_path='clash_royale_data_separated.pkl') -> Optional[pd.DataFrame]:
     """
     Loads and merges the example data for visualization.
-    This demonstrates the data structure the functions expect.
     """
     print("🚀 Loading example data...")
     
     try:
         # Load card database
         card_db = pd.read_csv(card_db_path)
-
         
         # Load battle data
         with open(battle_data_path, 'rb') as f:
@@ -186,54 +191,86 @@ def load_example_data(card_db_path='card_database.csv', battle_data_path='clash_
         # Create combined DataFrame
         combined_df = pd.concat([evo_df, non_evo_df], ignore_index=True)
 
-        # Prepare archetype data
+        # Prepare archetype data (still needed for the treemap)
         combined_df = prepare_archetype_data(combined_df, DEFAULT_ARCHETYPE_MAPPING)
 
-        
+        print("✓ Deck Archetype data loaded successfully.")
         return combined_df
         
     except Exception as e:
-        print(f"❌ Error loading data: {e}")
-        print("Please make sure 'card_database.csv' and 'clash_royale_data_separated.pkl' are present in the same directory.")
-        return 
+        print(f"❌ Error loading data for Deck page: {e}")
+        return None
 
 
-        # 1. Load and prepare data
-# This step is now separate from the visualization functions.
-
+# 1. Load and prepare data
+# (Assuming paths are relative to app.py in the root folder)
 card_db_path = "../#2 Data Storage/Visualization Data/card_database.csv"
 battle_data_path = "../#2 Data Storage/Visualization Data/clash_royale_data_separated.pkl"
 
 df = load_example_data(card_db_path, battle_data_path)
+
+# 2. Create Layout
 if df is not None:
     # 2. Create visualizations
     Archetype_Sunburst = create_archetype_sunburst(df)
     Card_Treemap = create_card_treemap(df)
 
-
-layout = dbc.Container(
-    [
-        html.Div(
-            html.H2("Deck Archetypes Visualization"),
-            className="page-title-container"
-        ),
-        dbc.Row(
-            [
-                dbc.Col(
-                    dcc.Graph(figure=Archetype_Sunburst),
-                    width=12
-                )
-            ],
-            className="mb-4"
-        ),
-        dbc.Row(
-            [
-                dbc.Col(
-                    dcc.Graph(figure=Card_Treemap),
-                    width=12
-                )
-            ]
-        )
-    ],
-    fluid=True
-)   
+    # --- MODIFIED: Updated Layout ---
+    layout = dbc.Container(
+        [
+            html.Div(
+                [
+                    html.H2("Deck Archetypes Visualization")
+                ],
+                className="page-title-container"
+            ),
+            
+            # --- MODIFICATION: Wrapped in Card ---
+            dbc.Row(
+                [
+                    dbc.Col(
+                        dbc.Card([
+                            dbc.CardHeader("Deck Archetype Hierarchy and Performance"),
+                            dbc.CardBody([
+                                dcc.Graph(figure=Archetype_Sunburst)
+                            ])
+                        ]),
+                        width=12
+                    )
+                ],
+                className="mb-4"
+            ),
+            
+            # --- MODIFICATION: Wrapped in Card ---
+            dbc.Row(
+                [
+                    dbc.Col(
+                        dbc.Card([
+                            dbc.CardHeader("Card Performance Treemap (Size=Usage, Color=Win Rate)"),
+                            dbc.CardBody([
+                                dcc.Graph(figure=Card_Treemap)
+                            ])
+                        ]),
+                        width=12
+                    )
+                ]
+            )
+        ],
+        fluid=True
+    )
+else:
+    # Error layout
+    layout = dbc.Container(
+        [
+            html.Div(
+                html.H2("Deck Archetypes Visualization"),
+                className="page-title-container"
+            ),
+            dbc.Alert(
+                "Data could not be loaded. Please ensure 'card_database.csv' and 'clash_royale_data_separated.pkl' are present in the correct folder.",
+                color="danger",
+                className="mt-4"
+            )
+        ],
+        fluid=True
+    )
