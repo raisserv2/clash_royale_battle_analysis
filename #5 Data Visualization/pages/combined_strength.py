@@ -119,8 +119,10 @@ summary_metrics_card = dbc.Card([
 
 layout = dbc.Container(
     [
-        html.H2("Troop Combinations Overview"),
-        html.Hr(),
+        html.Div(
+            html.H2("Troop Combinations Overview"),
+            className="page-title-container"
+        ),
         dbc.Row([
             dbc.Col([
                 dbc.Card(

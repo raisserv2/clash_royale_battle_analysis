@@ -149,8 +149,10 @@ def create_troop_figure(selected_troop, evo_type):
 
 layout = dbc.Container(
     [
-        html.H2("Troop A vs Troop B"),
-        html.Hr(),
+        html.Div(
+            html.H2("Troop A vs Troop B"),
+            className="page-title-container"
+        ),
         # Troop Comparison Section
         dbc.Row(
             [
