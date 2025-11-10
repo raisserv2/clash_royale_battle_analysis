@@ -51,7 +51,7 @@ try:
     df_grouped['Win_Rate'] = (df_grouped['Won'] / df_grouped['Total_Matches']).fillna(0) * 100
     
     # Build the nested dictionary map {Card: {Arena: WinRate}}
-    for (arena_num, card), win_rate in df_grouped['Win_Rate'].items():
+    for (arena_num, card), win_rate in df_grouped['Win_Rate'].items(): # type: ignore
         if win_rate > 0:
             win_rate_data[card][arena_num] = win_rate
             
@@ -81,7 +81,7 @@ layout = dbc.Container(
                                         dcc.Dropdown(
                                             id="card-selector",
                                             # <-- FIX: Use the 'card_options' variable -->
-                                            options=card_options,
+                                            options=card_options, # type: ignore
                                             placeholder="Select card(s)...",
                                             multi=True, 
                                             clearable=True,

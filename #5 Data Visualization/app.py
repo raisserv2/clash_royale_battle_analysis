@@ -26,7 +26,7 @@ navbar = dbc.NavbarSimple(
         dbc.NavItem(dbc.NavLink("Arena Stats", href="/arena")),
         dbc.NavItem(dbc.NavLink("Builder", href="/builder")),
         dbc.NavItem(dbc.NavLink("Combos", href="/combined")),
-        dbc.NavItem(dbc.NavLink("Evo", href="/Evo")),
+        dbc.NavItem(dbc.NavLink("Evo", href="/evo")),
     ],
 )
 
@@ -42,7 +42,7 @@ app.layout = dbc.Container(
 
 
 if __name__ == "__main__":
-    app.run(debug=False, port=8050)
+    app.run(debug=True, port=8050)
 
 
 # if __name__ == "__main__":
