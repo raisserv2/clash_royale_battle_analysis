@@ -104,7 +104,7 @@ def create_win_rate_usage_bubble(df: pd.DataFrame, min_plays: int = 100) -> go.F
 
 # --- UNUSED: Removed prepare_archetype_data function ---
 
-def load_example_data(card_db_path='card_database.csv', battle_data_path='clash_royale_data_separated.pkl') -> pd.DataFrame | None:
+def load_example_data(card_db_path='card_database.csv', battle_data_path='clash_royale_data_separated.pkl') -> pd.DataFrame:
     """
     Loads and merges the example data for visualization.
     """
