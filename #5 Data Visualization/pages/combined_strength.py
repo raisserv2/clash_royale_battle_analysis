@@ -9,6 +9,8 @@ import plotly.io as pio
 from dash import Output, Input
 dash.register_page(__name__, path="/combined", name="Combined Strength")
 
+# TODO: add elixir counts and stuff like that in troopA vs troopB comparison
+
 INPUT_FILE = "../#2 Data Storage/Visualization Data/card_pair_data.csv"
 TROOP_PATH = "../#2 Data Storage/Utils/troop_name.csv"
 df_troops_name = pd.read_csv(TROOP_PATH)["Troop_name"]

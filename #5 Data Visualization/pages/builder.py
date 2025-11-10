@@ -15,7 +15,6 @@ try:
     with open(JSON_FILE, 'r') as f:
         card_data = json.load(f)
     all_cards_list = sorted(list(card_data.keys()))
-    card_options = [{"label": card, "value": card} for card in all_cards_list]
     
 except Exception as e:
     print(f"CRITICAL ERROR: Could not load {JSON_FILE}. {e}")
@@ -40,7 +39,7 @@ layout = dbc.Container(
                                         html.P("Select one or more cards to compare:", className="card-text"),
                                         dcc.Dropdown(
                                             id="card-selector",
-                                            options=card_options,
+                                            options= [{"label": card, "value": card} for card in all_cards_list],
                                             placeholder="Select card(s)...",
                                             multi=True, 
                                             clearable=True,
