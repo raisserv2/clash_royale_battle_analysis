@@ -14,10 +14,16 @@ dash.register_page(__name__, path="/builder", name="Card & Arena Analysis")
 JSON_FILE = "../#2 Data Storage/Visualization Data/card_percentage_dict.json" 
 try:
     with open(JSON_FILE, 'r') as f:
+<<<<<<< HEAD
         usage_rate_data = json.load(f)
     all_cards_list = sorted(list(usage_rate_data.keys()))
     card_options = [{"label": card, "value": card} for card in all_cards_list]
     print("Usage rate data loaded.")
+=======
+        card_data = json.load(f)
+    all_cards_list = sorted(list(card_data.keys()))
+    
+>>>>>>> f226913fb3c5cbc8e49de478a9d6ef3cec9f78f4
 except Exception as e:
     print(f"CRITICAL ERROR: Could not load {JSON_FILE}. {e}")
     usage_rate_data = {}
@@ -69,7 +75,7 @@ layout = dbc.Container(
                                         html.P("Select one or more cards:", className="card-text"),
                                         dcc.Dropdown(
                                             id="card-selector",
-                                            options=card_options,
+                                            options= [{"label": card, "value": card} for card in all_cards_list],
                                             placeholder="Select card(s)...",
                                             multi=True, 
                                             clearable=True,
