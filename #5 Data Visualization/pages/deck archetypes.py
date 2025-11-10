@@ -43,60 +43,54 @@ def create_archetype_sunburst(df: pd.DataFrame) -> go.Figure:
     """
     Sunburst chart of archetypes and cards.
     """
-    # --- MODIFICATION: Build data directly from the mapping ---
     sunburst_data = []
     
-    # Add a root node
     sunburst_data.append({
         'ids': 'All Archetypes',
         'labels': 'All Archetypes',
         'parents': '',
-        'values': 0.0, # Will be summed by plotly
-        'win_rate': 50.0 # Neutral
+        'values': 0.0, 
+        'win_rate': 50.0 
     })
 
-    # Loop through the mapping to build the hierarchy correctly
     for archetype, cards_list in DEFAULT_ARCHETYPE_MAPPING.items():
-        # Filter the main dataframe for cards in this archetype
         archetype_cards = df[df['card'].isin(cards_list)]
         
         if not archetype_cards.empty:
             total_usage = archetype_cards['usage_count'].sum()
-            # Calculate weighted average win rate for the archetype
             avg_win_rate = (archetype_cards['win_percentage'] * archetype_cards['total_plays']).sum() / archetype_cards['total_plays'].sum()
             
-            # Archetype level
             sunburst_data.append({
                 'ids': archetype,
                 'labels': archetype,
-                'parents': 'All Archetypes', # Parent is the root
+                'parents': 'All Archetypes', 
                 'values': total_usage,
                 'win_rate': avg_win_rate
             })
             
-            # Card level
             for _, card in archetype_cards.iterrows():
                 sunburst_data.append({
-                    'ids': f"{archetype}-{card['card']}", # Unique ID
+                    'ids': f"{archetype}-{card['card']}", 
                     'labels': card['card'],
-                    'parents': archetype, # Parent is the archetype
+                    'parents': archetype, 
                     'values': card['usage_count'],
                     'win_rate': card['win_percentage']
                 })
     
     df_sunburst = pd.DataFrame(sunburst_data)
     
-    # Ensure root node 'All Archetypes' is not counted in 'values'
     df_sunburst_fig = df_sunburst[df_sunburst['parents'] != '']
     
     fig = px.sunburst(df_sunburst_fig, path=['parents', 'labels'], values='values',
-                      color='win_rate', color_continuous_scale='RdYlGn',
+                      color='win_rate', 
+                      # --- COLOR CHANGE HERE ---
+                      color_continuous_scale='turbo_r',
+                    #   color_continuous_midpoint=50,      # Center the scale at 50%
                       title='Deck Archetype Hierarchy and Performance',
                       hover_data={'win_rate': ':.1f%'})
     
-    # --- MODIFICATION: Apply Theme and Height ---
     fig.update_layout(
-        height=800, # Increased height
+        height=800, 
         template="plotly_dark",
         paper_bgcolor="rgba(0,0,0,0)",
         plot_bgcolor="rgba(0,0,0,0)",
@@ -123,10 +117,11 @@ def create_card_treemap(df: pd.DataFrame, min_plays: int = 30) -> go.Figure:
     
     fig = px.treemap(df_filtered, path=['rarity', 'archetype', 'card'],
                      values='usage_count', color='win_percentage',
-                     color_continuous_scale='RdYlGn',
+                     # --- COLOR CHANGE HERE ---
+                     color_continuous_scale='turbo_r',
+                     color_continuous_midpoint=50,      # Center the scale at 50%
                      title='Card Performance Treemap (Size=Usage, Color=Win Rate)')
     
-    # --- MODIFICATION: Apply Theme ---
     fig.update_layout(
         margin=dict(t=50, l=25, r=25, b=25),
         template="plotly_dark",
@@ -135,7 +130,6 @@ def create_card_treemap(df: pd.DataFrame, min_plays: int = 30) -> go.Figure:
         font=dict(family="'Clash Regular', Arial, sans-serif", size=14, color="#FFFFFF"),
         title_font=dict(family="'Clash Bold', Arial, sans-serif", size=20)
     )
-    # Update text on the plot itself
     fig.update_traces(
         textfont=dict(family="'Clash Regular', Arial, sans-serif")
     )
