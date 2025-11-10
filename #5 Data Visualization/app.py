@@ -1,4 +1,3 @@
-
 import dash
 from dash import html,dcc, Input, Output
 import dash_bootstrap_components as dbc
@@ -19,6 +18,7 @@ server = app.server
 # Navbar
 navbar = dbc.NavbarSimple(
     brand="Battle Dashboard",
+    brand_href="/",  # <-- Added this line to redirect to home
     color="primary",
     dark=True,
     children=[
@@ -74,7 +74,3 @@ def update_page_class(pathname):
 
 if __name__ == "__main__":
     app.run(debug=True, port=8050)
-
-
-# if __name__ == "__main__":
-#     app.run( host ="0.0.0.0", debug=False, port=8050)

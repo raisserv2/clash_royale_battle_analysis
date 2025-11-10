@@ -43,3 +43,26 @@ body {
 .js-plotly-plot .plotly .main-svg {
     background-color: transparent !important;
 }
+
+/* In assets/style.css */
+
+/* Hero Section Styling */
+.hero-container {
+    /* Uses one of the images you have in assets */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url('/assets/clash_royale_wall_paper.webp');
+    background-size: cover;
+    background-position: center;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+/* Card Hover Effect */
+.hover-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5) !important;
+    border-color: var(--bs-primary) !important; /* Highlights border on hover */
+}

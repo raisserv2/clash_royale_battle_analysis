@@ -91,7 +91,7 @@ body {
   background-repeat: no-repeat;
 }
 #main-app-container.page-builder-background {
-  background-image: url('larry.jpg'); /* <-- Change this */
+  background-image: url('campfire.jpg'); /* <-- Change this */
   background-size: cover;
   background-position: center center;
   background-attachment: fixed;
@@ -118,7 +118,7 @@ body {
 
 /* Background for the TROOP page */
 #main-app-container.page-rarity-background {
-  background-image: url('11240.jpg'); /* <-- Change this */
+  background-image: url('mueseum.jpg'); /* <-- Change this */
   background-size: cover;
   background-position: center center;
   background-attachment: fixed;
