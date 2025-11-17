@@ -4,5 +4,8 @@ It all started [here](https://docs.google.com/document/d/1P1xMMxAJBzro9hB0N45q5G
 
 
 data scrapping
+data cleaning
 data dedupication
 data visualization
+
+Check out the Battle Data Dashboard at: https://clash-royale-battle-analysis.onrender.com
