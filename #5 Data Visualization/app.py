@@ -73,7 +73,7 @@ def update_page_class(pathname):
         return "page-default-background"
 
 if __name__ == "__main__":
-    app.run(debug=True, port=8050)
+    app.run_server(debug=True, port=8050)
 
 
 #if u want to deploy on local server uncomment below and comment above
