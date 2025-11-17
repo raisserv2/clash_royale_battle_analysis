@@ -58,7 +58,10 @@ def make_feature_card(title, description, link, icon="📊", color="primary"):
 features_section = html.Div([
     dbc.Row(
         [
-            html.H3("Analytics Tools", className="text-white mb-4 border-bottom border-primary pb-2 d-inline-block")
+            html.Div(
+            html.H3("Analytics Tools", className="text-white mb-4 border-bottom border-primary pb-2 d-inline-block"),
+            className="page-sub-title-container"
+        )   
         ], 
         className="mb-3 text-center"
     ),
